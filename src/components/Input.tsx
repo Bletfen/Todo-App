@@ -76,7 +76,7 @@ export default function Input({
         type="text"
         placeholder="Create a new todo…"
         className="text-[#393a4b] text-[1.2rem] xl:text-[1.8rem] font-normal
-        tracking-[-0.167px] xl:tracking-[-0.25px] outline-none "
+        tracking-[-0.167px] xl:tracking-[-0.25px] outline-none w-full"
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
