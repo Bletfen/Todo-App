@@ -147,7 +147,7 @@ export default function MainContainer() {
             xl:items-center"
           >
             <span
-              className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[#494c6b] ${
+              className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] transition-all duration-300 hover:text-[#494c6b] ${
                 filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
               }`}
               onClick={() => {
@@ -158,7 +158,7 @@ export default function MainContainer() {
               All
             </span>
             <span
-              className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[#494c6b] ${
+              className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px] transition-all duration-300 hover:text-[#494c6b] ${
                 filtered === "active" ? "text-[#3a7cfd]" : "text-[#9495a5]"
               }`}
               onClick={() => {
@@ -169,7 +169,7 @@ export default function MainContainer() {
               Active
             </span>
             <span
-              className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[#494c6b] ${
+              className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] transition-all duration-300 hover:text-[#494c6b] ${
                 filtered === "completed" ? "text-[#3a7cfd]" : "text-[#9495a5]"
               }`}
               onClick={() => {
@@ -181,7 +181,7 @@ export default function MainContainer() {
             </span>
           </div>
           <span
-            className="cursor-[pointer] hover:text-[#494c6b]"
+            className="cursor-[pointer] transition-all duration-300 hover:text-[#494c6b]"
             onClick={() => clearHandler()}
           >
             Clear Completed
