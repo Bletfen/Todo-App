@@ -163,11 +163,11 @@ export default function MainContainer() {
       </div>
       <div
         className="py-[1.5rem] flex justify-center bg-[#fff]
-      shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
-      rounded-[0.5rem] mt-[1.6rem] gap-[1.9rem] xl:hidden"
+        shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
+        rounded-[0.5rem] mt-[1.6rem] gap-[1.9rem] xl:hidden"
       >
         <span
-          className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[494c6b] ${
+          className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] ${
             filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
           }`}
           onClick={() => {
