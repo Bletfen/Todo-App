@@ -167,7 +167,9 @@ export default function MainContainer() {
       rounded-[0.5rem] mt-[1.6rem] gap-[1.9rem] xl:hidden"
       >
         <span
-          className="cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px]"
+          className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[494c6b] ${
+            filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+          }`}
           onClick={() => {
             setFiltered("all");
             setTodo(allTodos);
@@ -176,7 +178,9 @@ export default function MainContainer() {
           All
         </span>
         <span
-          className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]"
+          className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px] ${
+            filtered === "active" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+          }`}
           onClick={() => {
             setFiltered("active");
             setTodo(allTodos.filter((item) => !item.completed));
@@ -185,7 +189,9 @@ export default function MainContainer() {
           Active
         </span>
         <span
-          className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]"
+          className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] ${
+            filtered === "completed" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+          }`}
           onClick={() => {
             setFiltered("completed");
             setTodo(allTodos.filter((item) => item.completed));
