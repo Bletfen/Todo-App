@@ -34,9 +34,13 @@ export default function MainContainer() {
     setAllTodos(filteredTodos);
   }
   function clearHandler() {
-    const clearCompleted = allTodos.filter((item) => item.completed === false);
-    setTodo(clearCompleted);
-    setAllTodos(clearCompleted);
+    const updateAll = allTodos.filter((item) => !item.completed);
+    setAllTodos(updateAll);
+    if (todos.every((item) => item.completed)) {
+      setTodo([]);
+    } else {
+      setTodo(updateAll.filter((item) => !item.completed));
+    }
   }
 
   return (
