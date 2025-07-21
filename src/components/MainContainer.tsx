@@ -1,0 +1,195 @@
+import { useState } from "react";
+import Todos from "../todos.json";
+import Input from "./Input";
+export default function MainContainer() {
+  const [todos, setTodo] = useState<TTodo>(Todos);
+  const [allTodos, setAllTodos] = useState<TTodo>(Todos);
+  const [filtered, setFiltered] = useState<"all" | "active" | "completed">(
+    "all"
+  );
+  console.log(todos);
+  const completedTodos = todos.filter(
+    (item) => item.completed === false
+  ).length;
+  function toggle(id: number) {
+    const updateAll = allTodos.map((item) =>
+      item.id === id ? { ...item, completed: !item.completed } : item
+    );
+    setAllTodos(updateAll);
+    switch (filtered) {
+      case "all":
+        setTodo(updateAll);
+        break;
+      case "active":
+        setTodo(updateAll.filter((item) => !item.completed));
+        break;
+      case "completed":
+        setTodo(updateAll.filter((item) => item.completed));
+        break;
+    }
+  }
+  function handleDelete(id: number) {
+    const filteredTodos = todos.filter((item) => item.id !== id);
+    setTodo(filteredTodos);
+    setAllTodos(filteredTodos);
+  }
+  function clearHandler() {
+    const clearCompleted = allTodos.filter((item) => item.completed === false);
+    setTodo(clearCompleted);
+    setAllTodos(clearCompleted);
+  }
+
+  return (
+    <>
+      <Input
+        todos={todos}
+        setTodo={setTodo}
+        allTodos={allTodos}
+        setAllTodos={setAllTodos}
+      />
+      <div
+        className=" py-[1.6rem]
+      shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
+      flex-col bg-[#fff] rounded-[0.5rem]"
+      >
+        {todos.map((todo) => (
+          <div key={todo.id}>
+            <div className="flex items-center justify-between px-[2rem]">
+              <div className="flex items-center gap-[1.2rem] items-center">
+                {!todo.completed ? (
+                  <div
+                    className="w-[2rem] h-[2rem]
+                    xl:w-[2.4rem] xl:h-[2.4rem]
+                    bg-[#fff] border-[0.1rem] border-[#e3e4f1] rounded-[50%] cursor-[pointer]"
+                    onClick={() => toggle(todo.id)}
+                  ></div>
+                ) : (
+                  <svg
+                    className="w-[2rem] h-[2rem] xl:w-[2.4rem] xl:h-[2.4rem] cursor-[pointer]"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    onClick={() => toggle(todo.id)}
+                  >
+                    <circle
+                      cx="10"
+                      cy="10"
+                      r="9.5"
+                      fill="white"
+                      stroke="#E3E4F1"
+                    />
+                    <circle
+                      cx="10"
+                      cy="10"
+                      r="10"
+                      fill="url(#paint0_linear_0_371)"
+                    />
+                    <path
+                      d="M6.66675 10.2534L8.91333 12.5L13.9133 7.5"
+                      stroke="white"
+                      strokeWidth="2"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="paint0_linear_0_371"
+                        x1="-10"
+                        y1="10"
+                        x2="10"
+                        y2="30"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#55DDFF" />
+                        <stop offset="1" stopColor="#C058F3" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                )}
+                <p
+                  className={`text-[#494c6b] text-[1.2rem] xl:text-[1.8rem] font-normal
+                    tracking-[-0.167px] xl:tracking-[-0.25px] ${
+                      todo.completed ? "line-through" : ""
+                    }`}
+                >
+                  {todo.text}
+                </p>
+              </div>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="cursor-[pointer]"
+                onClick={() => handleDelete(todo.id)}
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M11.7851 0.471404L11.3137 0L5.89256 5.42115L0.471404 0L0 0.471404L5.42115 5.89256L0 11.3137L0.471404 11.7851L5.89256 6.36396L11.3137 11.7851L11.7851 11.3137L6.36396 5.89256L11.7851 0.471404Z"
+                  fill="#494C6B"
+                />
+              </svg>
+            </div>
+            <div className="h-px bg-[#e3e4f1] my-[1.6rem] w-auto"></div>
+          </div>
+        ))}
+        <div
+          className="px-[2rem] flex items-center justify-between text-[1.2rem] 
+            xl:text-[1.4rem] text-[#9495a5] font-normal tracking-[-0.167px] xl:tracking-[-0.194px]"
+        >
+          <span>{completedTodos} items left</span>
+          <div
+            className="hidden xl:flex xl:gap-[1.9rem] 
+            xl:items-center"
+          >
+            <span className="cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px]">
+              All
+            </span>
+            <span className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]">
+              Active
+            </span>
+            <span className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]">
+              Completed
+            </span>
+          </div>
+          <span className="cursor-[pointer]" onClick={() => clearHandler()}>
+            Clear Completed
+          </span>
+        </div>
+      </div>
+      <div
+        className="py-[1.5rem] flex justify-center bg-[#fff]
+      shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
+      rounded-[0.5rem] mt-[1.6rem] gap-[1.9rem] xl:hidden"
+      >
+        <span
+          className="cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px]"
+          onClick={() => {
+            setFiltered("all");
+            setTodo(allTodos);
+          }}
+        >
+          All
+        </span>
+        <span
+          className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]"
+          onClick={() => {
+            setFiltered("active");
+            setTodo(allTodos.filter((item) => !item.completed));
+          }}
+        >
+          Active
+        </span>
+        <span
+          className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]"
+          onClick={() => {
+            setFiltered("completed");
+            setTodo(allTodos.filter((item) => item.completed));
+          }}
+        >
+          Completed
+        </span>
+      </div>
+    </>
+  );
+}
