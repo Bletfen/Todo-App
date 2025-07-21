@@ -146,17 +146,44 @@ export default function MainContainer() {
             className="hidden xl:flex xl:gap-[1.9rem] 
             xl:items-center"
           >
-            <span className="cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px]">
+            <span
+              className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[#494c6b] ${
+                filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+              }`}
+              onClick={() => {
+                setFiltered("all");
+                setTodo(allTodos);
+              }}
+            >
               All
             </span>
-            <span className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]">
+            <span
+              className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[#494c6b] ${
+                filtered === "active" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+              }`}
+              onClick={() => {
+                setFiltered("active");
+                setTodo(allTodos.filter((item) => !item.completed));
+              }}
+            >
               Active
             </span>
-            <span className="cursor-[pointer] text-[#9495a5] text-[1.4rem] font-[700] tracking-[-0.194px]">
+            <span
+              className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] hover:text-[#494c6b] ${
+                filtered === "completed" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+              }`}
+              onClick={() => {
+                setFiltered("completed");
+                setTodo(allTodos.filter((item) => item.completed));
+              }}
+            >
               Completed
             </span>
           </div>
-          <span className="cursor-[pointer]" onClick={() => clearHandler()}>
+          <span
+            className="cursor-[pointer] hover:text-[#494c6b]"
+            onClick={() => clearHandler()}
+          >
             Clear Completed
           </span>
         </div>
