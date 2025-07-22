@@ -85,7 +85,11 @@ export default function Input({
         type="text"
         placeholder="Create a new todo…"
         className={`text-[1.2rem] xl:text-[1.8rem] font-normal
-        tracking-[-0.167px] xl:tracking-[-0.25px] outline-none w-full ${!isDark} ? text-[#393a4b] : text-[#cbcbe7]`}
+        tracking-[-0.167px] xl:tracking-[-0.25px] outline-none w-full ${
+          !isDark
+            ? "text-[#393a4b] transition-all duration-300"
+            : "text-[#cbcbe7] transition-all duration-300"
+        }`}
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);

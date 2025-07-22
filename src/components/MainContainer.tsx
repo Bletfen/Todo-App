@@ -119,7 +119,11 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                   className={`text-[1.2rem] xl:text-[1.8rem] font-normal
                     tracking-[-0.167px] xl:tracking-[-0.25px] ${
                       todo.completed ? "line-through" : ""
-                    } ${!isDark ? "text-[#494c6b]" : "text-[#c8cbe7]"}`}
+                    } ${
+                    !isDark
+                      ? "text-[#494c6b] transition-all duration-300"
+                      : "text-[#c8cbe7] transition-all duration-300"
+                  }`}
                 >
                   {todo.text}
                 </p>

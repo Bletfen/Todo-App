@@ -11,8 +11,8 @@ function App() {
       pl-[2.6rem] pr-[2.4rem] 
       ${
         !isDark
-          ? "bg-[url(/images/bg-mobile-dark.jpg)] xl:bg-[url(/images/bg-desktop-dark.jpg)] bg-[#fff]"
-          : "bg-[url(/images/bg-mobile-light.jpg)] xl:bg-[url(/images/bg-desktop-light.jpg)] bg-[#171823]"
+          ? "bg-[url(/images/bg-mobile-dark.jpg)] xl:bg-[url(/images/bg-desktop-dark.jpg)] bg-[#fff] transition-all duration-300"
+          : "bg-[url(/images/bg-mobile-light.jpg)] xl:bg-[url(/images/bg-desktop-light.jpg)] bg-[#171823] transition-all duration-300"
       } `}
     >
       <Header isDark={isDark} setIsDark={setIsDark} />
