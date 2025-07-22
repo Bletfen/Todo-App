@@ -1,13 +1,7 @@
 import { useState } from "react";
 import Todos from "../todos.json";
 import Input from "./Input";
-export default function MainContainer({
-  isDark,
-  setIsDark,
-}: {
-  isDark: boolean;
-  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [todos, setTodo] = useState<TTodo>(Todos);
   const [allTodos, setAllTodos] = useState<TTodo>(Todos);
   const [filtered, setFiltered] = useState<"all" | "active" | "completed">(
