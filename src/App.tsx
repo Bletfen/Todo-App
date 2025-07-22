@@ -2,6 +2,7 @@ import MainContainer from "./components/MainContainer";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 function App() {
+  const [isDark, setIsDark] = useState<boolean>(false);
   return (
     <div
       className="min-h-screen w-full 
@@ -10,8 +11,8 @@ function App() {
       xl:bg-[url(/images/bg-desktop-dark.jpg)]
       pl-[2.6rem] pr-[2.4rem]"
     >
-      <Header />
-      <MainContainer />
+      <Header isDark={isDark} setIsDark={setIsDark} />
+      <MainContainer isDark={isDark} setIsDark={setIsDark} />
       <Footer />
     </div>
   );

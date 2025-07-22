@@ -1,5 +1,11 @@
 import moon from "/images/icon-moon.svg";
-export default function Header() {
+export default function Header({
+  isDark,
+  setIsDark,
+}: {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <div
       className="flex justify-between pt-[4.8rem] 
