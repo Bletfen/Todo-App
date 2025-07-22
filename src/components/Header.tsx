@@ -1,7 +1,10 @@
-import moon from "/images/icon-moon.svg";
+import Moon from "/images/icon-moon.svg";
+import Sun from "/images/icon-sun.svg";
 export default function Header({
+  isDark,
   setIsDark,
 }: {
+  isDark: boolean;
   setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
@@ -24,7 +27,7 @@ export default function Header({
         />
       </svg>
       <img
-        src={moon}
+        src={!isDark ? Moon : Sun}
         alt="icon-moon"
         className="cursor-[pointer]"
         onClick={() => setIsDark((prev) => !prev)}

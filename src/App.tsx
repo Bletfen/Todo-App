@@ -12,8 +12,8 @@ function App() {
       xl:bg-[url(/images/bg-desktop-dark.jpg)]
       pl-[2.6rem] pr-[2.4rem]"
     >
-      <Header setIsDark={setIsDark} />
-      <MainContainer isDark={isDark} />
+      <Header isDark={isDark} setIsDark={setIsDark} />
+      <MainContainer isDark={isDark} setIsDark={setIsDark} />
       <Footer />
     </div>
   );
