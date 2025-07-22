@@ -7,7 +7,6 @@ export default function MainContainer() {
   const [filtered, setFiltered] = useState<"all" | "active" | "completed">(
     "all"
   );
-  console.log(todos);
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
