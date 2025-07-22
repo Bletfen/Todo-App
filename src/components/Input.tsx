@@ -63,7 +63,7 @@ export default function Input({
           <path
             d="M6.66675 10.2534L8.91333 12.5L13.9133 7.5"
             stroke="white"
-            stroke-width="2"
+            strokeWidth="2"
           />
           <defs>
             <linearGradient
@@ -74,8 +74,8 @@ export default function Input({
               y2="30"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#55DDFF" />
-              <stop offset="1" stop-color="#C058F3" />
+              <stop stopColor="#55DDFF" />
+              <stop offset="1" stopColor="#C058F3" />
             </linearGradient>
           </defs>
         </svg>

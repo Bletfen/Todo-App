@@ -45,7 +45,6 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
 
   function handleDrop(dropIndex: number) {
     if (draggedIndex === null || draggedIndex === dropIndex) return;
-    if (todos[draggedIndex].completed) return;
     const newTodos = [...todos];
     const draggedItems = newTodos[draggedIndex];
 
