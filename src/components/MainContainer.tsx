@@ -163,9 +163,9 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
           >
             <span
               className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] 
-                transition-all duration-300 hover:text-[#494c6b] ${
+                transition-all duration-300 ${
                   filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
-                }`}
+                } ${!isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"}`}
               onClick={() => {
                 setFiltered("all");
                 setTodo(allTodos);
@@ -175,9 +175,11 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             </span>
             <span
               className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px]
-                 transition-all duration-300 hover:text-[#494c6b] ${
+                 transition-all duration-300 ${
                    filtered === "active" ? "text-[#3a7cfd]" : "text-[#9495a5]"
-                 }`}
+                 } ${
+                !isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"
+              }`}
               onClick={() => {
                 setFiltered("active");
                 setTodo(allTodos.filter((item) => !item.completed));
@@ -187,9 +189,9 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             </span>
             <span
               className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] 
-                transition-all duration-300 hover:text-[#494c6b] ${
+                transition-all duration-300 ${
                   filtered === "completed" ? "text-[#3a7cfd]" : "text-[#9495a5]"
-                }`}
+                } ${!isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"}`}
               onClick={() => {
                 setFiltered("completed");
                 setTodo(allTodos.filter((item) => item.completed));
@@ -199,7 +201,8 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             </span>
           </div>
           <span
-            className="cursor-[pointer] transition-all duration-300 hover:text-[#494c6b]"
+            className={`cursor-[pointer] transition-all duration-300 hover:text-[#494c6b]
+               ${!isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"}`}
             onClick={() => clearHandler()}
           >
             Clear Completed
