@@ -52,9 +52,12 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
         isDark={isDark}
       />
       <div
-        className=" py-[1.6rem]
-      shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
-      flex-col bg-[#fff] rounded-[0.5rem] max-w-[54rem] mx-auto"
+        className={`py-[1.6rem]
+      flex-col rounded-[0.5rem] max-w-[54rem] mx-auto ${
+        !isDark
+          ? "bg-[#fff] shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]"
+          : "bg-[#25273d] shadow-[0_3.5rem_5rem_-1.5rem_rgba(0,0,0,0.50)]"
+      }`}
       >
         {todos.map((todo) => (
           <div key={todo.id}>
