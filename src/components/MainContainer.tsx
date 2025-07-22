@@ -45,7 +45,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
 
   function handleDrop(dropIndex: number) {
     if (draggedIndex === null || draggedIndex === dropIndex) return;
-
+    if (todos[draggedIndex].completed) return;
     const newTodos = [...todos];
     const draggedItems = newTodos[draggedIndex];
 
@@ -53,6 +53,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
     newTodos.splice(dropIndex, 0, draggedItems);
 
     setTodo(newTodos);
+    setAllTodos(newTodos);
     setDraggedIndex(null);
   }
 
@@ -138,11 +139,18 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                 )}
                 <p
                   className={`text-[1.2rem] xl:text-[1.8rem] font-normal
-                    tracking-[-0.167px] xl:tracking-[-0.25px] ${
-                      !isDark
-                        ? "text-[#494c6b] transition-all duration-300"
-                        : "text-[#c8cbe7] transition-all duration-300"
-                    } ${todo.completed ? "line-through text-[#d1d2da]" : ""} `}
+                    tracking-[-0.167px] xl:tracking-[-0.25px]  ${
+                      todo.completed ? "line-through" : ""
+                    } 
+                    ${
+                      todo.completed
+                        ? isDark
+                          ? "text-[#4d5067]"
+                          : "text-[#d1d2da]"
+                        : isDark
+                        ? "text-[#c8cbe7]"
+                        : "text-[#494c6b]"
+                    }`}
                 >
                   {todo.text}
                 </p>
