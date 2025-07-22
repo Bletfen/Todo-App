@@ -55,6 +55,7 @@ export default function MainContainer({
         setTodo={setTodo}
         allTodos={allTodos}
         setAllTodos={setAllTodos}
+        isDark={isDark}
       />
       <div
         className=" py-[1.6rem]

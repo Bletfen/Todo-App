@@ -4,11 +4,13 @@ export default function Input({
   setTodo,
   allTodos,
   setAllTodos,
+  isDark,
 }: {
   todos: TTodo;
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
   allTodos: TTodo;
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
+  isDark: boolean;
 }) {
   const [inputValue, setInputValue] = useState<string>("");
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -29,15 +31,17 @@ export default function Input({
 
   return (
     <div
-      className="py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4.8rem] bg-[#fff] 
+      className={`py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4.8rem]
         shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
-        rounded-[0.5rem] mb-[1.6rem] items-center max-w-[54rem] mx-auto"
+        rounded-[0.5rem] mb-[1.6rem] items-center max-w-[54rem] mx-auto ${
+          !isDark ? "bg-[#fff]" : "bg-[#25273d]"
+        }`}
     >
       {!isChecked ? (
         <div
-          className="w-[2rem] h-[2rem]
+          className={`w-[2rem] h-[2rem]
                 xl:w-[2.4rem] xl:h-[2.4rem]
-                bg-[#fff] border-[0.1rem] border-[#e3e4f1] rounded-[50%] cursor-[pointer]"
+                bg-[#fff] border-[0.1rem] border-[#e3e4f1] rounded-[50%] cursor-[pointer]`}
         ></div>
       ) : (
         <svg
