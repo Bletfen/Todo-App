@@ -7,6 +7,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [filtered, setFiltered] = useState<"all" | "active" | "completed">(
     "all"
   );
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
@@ -42,6 +43,19 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
     }
   }
 
+  function handleDrop(dropIndex: number) {
+    if (draggedIndex === null || draggedIndex === dropIndex) return;
+
+    const newTodos = [...todos];
+    const draggedItems = newTodos[draggedIndex];
+
+    newTodos.splice(draggedIndex, 1);
+    newTodos.splice(dropIndex, 0, draggedItems);
+
+    setTodo(newTodos);
+    setDraggedIndex(null);
+  }
+
   return (
     <>
       <Input
@@ -59,9 +73,16 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
           : "bg-[#25273d] shadow-[0_3.5rem_5rem_-1.5rem_rgba(0,0,0,0.50)]"
       }`}
       >
-        {todos.map((todo) => (
-          <div key={todo.id} className="transition-all duration-300">
-            <div className="flex items-center justify-between px-[2rem]">
+        {todos.map((todo, index) => (
+          <div
+            key={todo.id}
+            className="transition-all duration-300"
+            draggable={true}
+            onDragStart={() => setDraggedIndex(index)}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={() => handleDrop(index)}
+          >
+            <div className="flex items-center justify-between px-[2rem] cursor-[grab]">
               <div className="flex items-center gap-[1.2rem] items-center">
                 {!todo.completed ? (
                   <div
