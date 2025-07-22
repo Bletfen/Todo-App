@@ -31,7 +31,7 @@ export default function Input({
     <div
       className="py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4.8rem] bg-[#fff] 
         shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
-        rounded-[0.5rem] mb-[1.6rem] items-center"
+        rounded-[0.5rem] mb-[1.6rem] items-center max-w-[54rem] mx-auto"
     >
       {!isChecked ? (
         <div

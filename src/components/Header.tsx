@@ -3,7 +3,7 @@ export default function Header() {
   return (
     <div
       className="flex justify-between pt-[4.8rem] 
-        items-center"
+        items-center max-w-[54rem] mx-auto"
     >
       <svg
         width="109"

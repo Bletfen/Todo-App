@@ -54,7 +54,7 @@ export default function MainContainer() {
       <div
         className=" py-[1.6rem]
       shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
-      flex-col bg-[#fff] rounded-[0.5rem]"
+      flex-col bg-[#fff] rounded-[0.5rem] max-w-[54rem] mx-auto"
       >
         {todos.map((todo) => (
           <div key={todo.id}>
@@ -191,7 +191,7 @@ export default function MainContainer() {
       <div
         className="py-[1.5rem] flex justify-center bg-[#fff]
         shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
-        rounded-[0.5rem] mt-[1.6rem] gap-[1.9rem] xl:hidden"
+        rounded-[0.5rem] mt-[1.6rem] gap-[1.9rem] xl:hidden max-w-[54rem] mx-auto"
       >
         <span
           className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] ${
