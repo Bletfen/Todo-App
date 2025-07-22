@@ -21,3 +21,14 @@ export function toggle(
       break;
   }
 }
+
+export function handleDelete(
+  id: number,
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
+  todos: TTodo
+) {
+  const filteredTodos = todos.filter((item) => item.id !== id);
+  setTodo(filteredTodos);
+  setAllTodos(filteredTodos);
+}

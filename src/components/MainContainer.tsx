@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Todos from "../todos.json";
 import Input from "./Input";
-import { toggle } from "./todoFunctions";
+import { toggle, handleDelete } from "./todoFunctions";
 export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [todos, setTodo] = useState<TTodo>(Todos);
   const [allTodos, setAllTodos] = useState<TTodo>(Todos);
@@ -12,11 +12,11 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
-  function handleDelete(id: number) {
-    const filteredTodos = todos.filter((item) => item.id !== id);
-    setTodo(filteredTodos);
-    setAllTodos(filteredTodos);
-  }
+  // function handleDelete(id: number) {
+  //   const filteredTodos = todos.filter((item) => item.id !== id);
+  //   setTodo(filteredTodos);
+  //   setAllTodos(filteredTodos);
+  // }
   function clearHandler() {
     const updateAll = allTodos.filter((item) => !item.completed);
     setAllTodos(updateAll);
@@ -149,7 +149,9 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="cursor-[pointer]"
-                onClick={() => handleDelete(todo.id)}
+                onClick={() =>
+                  handleDelete(todo.id, setTodo, setAllTodos, todos)
+                }
               >
                 <path
                   fillRule="evenodd"
