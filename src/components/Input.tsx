@@ -31,7 +31,7 @@ export default function Input({
 
   return (
     <div
-      className={`py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4.8rem]
+      className={`flex py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4.8rem]
         shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]
         rounded-[0.5rem] mb-[1.6rem] items-center max-w-[54rem] mx-auto ${
           !isDark ? "bg-[#fff]" : "bg-[#25273d]"
@@ -41,7 +41,11 @@ export default function Input({
         <div
           className={`w-[2rem] h-[2rem]
                 xl:w-[2.4rem] xl:h-[2.4rem]
-                bg-[#fff] border-[0.1rem] border-[#e3e4f1] rounded-[50%] cursor-[pointer]`}
+                border-[0.1rem] rounded-[50%] cursor-[pointer] shrink-0 ${
+                  !isDark
+                    ? "bg-[#fff] border-[#e3e4f1]"
+                    : "bg-[#25273d] border-[#393A4B]"
+                }`}
         ></div>
       ) : (
         <svg
@@ -79,8 +83,8 @@ export default function Input({
       <input
         type="text"
         placeholder="Create a new todo…"
-        className="text-[#393a4b] text-[1.2rem] xl:text-[1.8rem] font-normal
-        tracking-[-0.167px] xl:tracking-[-0.25px] outline-none w-full"
+        className={`text-[1.2rem] xl:text-[1.8rem] font-normal
+        tracking-[-0.167px] xl:tracking-[-0.25px] outline-none w-full ${!isDark} ? text-[#393a4b] : text-[#cbcbe7]`}
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
