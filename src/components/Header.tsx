@@ -12,7 +12,7 @@ export default function Header({
       className="flex justify-between pt-[4.8rem] xl:pt-[7rem] 
         items-center max-w-[54rem] mx-auto"
     >
-      <h1 className="text-[#fff] text-[3rem] xl:text-[4rem] font-[700] tracking-[1rem] xl:tracking-[1.5rem] self-center">
+      <h1 className="text-[#fff] text-[3rem] xl:text-[4rem] font-[700] tracking-[1rem] xl:tracking-[1.5rem]">
         TODO
       </h1>
       <img
