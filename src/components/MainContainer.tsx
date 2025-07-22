@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Todos from "../todos.json";
 import Input from "./Input";
+import { toggle } from "./todoFunctions";
 export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [todos, setTodo] = useState<TTodo>(Todos);
   const [allTodos, setAllTodos] = useState<TTodo>(Todos);
@@ -11,23 +12,6 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
-  function toggle(id: number) {
-    const updateAll = allTodos.map((item) =>
-      item.id === id ? { ...item, completed: !item.completed } : item
-    );
-    setAllTodos(updateAll);
-    switch (filtered) {
-      case "all":
-        setTodo(updateAll);
-        break;
-      case "active":
-        setTodo(updateAll.filter((item) => !item.completed));
-        break;
-      case "completed":
-        setTodo(updateAll.filter((item) => item.completed));
-        break;
-    }
-  }
   function handleDelete(id: number) {
     const filteredTodos = todos.filter((item) => item.id !== id);
     setTodo(filteredTodos);
@@ -93,7 +77,9 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                         ? "bg-[#fff] border-[#e3e4f1] hover:border-[#c058f3]"
                         : "bg-[#25273d] border-[#393A4B] hover:border-[#55ddff]"
                     }`}
-                    onClick={() => toggle(todo.id)}
+                    onClick={() =>
+                      toggle(todo.id, allTodos, filtered, setTodo, setAllTodos)
+                    }
                   ></div>
                 ) : (
                   <svg
@@ -101,7 +87,9 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    onClick={() => toggle(todo.id)}
+                    onClick={() =>
+                      toggle(todo.id, allTodos, filtered, setTodo, setAllTodos)
+                    }
                   >
                     <circle
                       cx="10"
