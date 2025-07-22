@@ -1,9 +1,7 @@
 import moon from "/images/icon-moon.svg";
 export default function Header({
-  isDark,
   setIsDark,
 }: {
-  isDark: boolean;
   setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
@@ -25,7 +23,12 @@ export default function Header({
           fill="white"
         />
       </svg>
-      <img src={moon} alt="icon-moon" className="cursor-[pointer]" />
+      <img
+        src={moon}
+        alt="icon-moon"
+        className="cursor-[pointer]"
+        onClick={() => setIsDark((prev) => !prev)}
+      />
     </div>
   );
 }
