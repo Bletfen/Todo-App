@@ -60,7 +60,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
       }`}
       >
         {todos.map((todo) => (
-          <div key={todo.id}>
+          <div key={todo.id} className="transition-all duration-300">
             <div className="flex items-center justify-between px-[2rem]">
               <div className="flex items-center gap-[1.2rem] items-center">
                 {!todo.completed ? (
@@ -69,8 +69,8 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                     xl:w-[2.4rem] xl:h-[2.4rem]
                     border-[0.1rem] rounded-[50%] cursor-[pointer] ${
                       !isDark
-                        ? "bg-[#fff] border-[#e3e4f1] transition-all duration-300 hover:border-[#c058f3]"
-                        : "bg-[#25273d] border-[#393A4B] transition-all duration-300 hover:border-[#55ddff]"
+                        ? "bg-[#fff] border-[#e3e4f1] hover:border-[#c058f3]"
+                        : "bg-[#25273d] border-[#393A4B] hover:border-[#55ddff]"
                     }`}
                     onClick={() => toggle(todo.id)}
                   ></div>
