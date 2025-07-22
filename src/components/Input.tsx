@@ -31,8 +31,8 @@ export default function Input({
 
   return (
     <div
-      className={`py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4.8rem]
-        rounded-[0.5rem] mb-[1.6rem] items-center max-w-[54rem] mx-auto ${
+      className={`py-[1.4rem] px-[2rem] flex gap-[1.2rem] mt-[4rem] xl:mt-[4.8rem]
+        rounded-[0.5rem] mb-[1.6rem] xl:mb-[2.4rem] items-center max-w-[54rem] mx-auto ${
           !isDark
             ? "bg-[#fff] shadow-[0_3.5rem_5rem_-1.5rem_rgba(194,195,214,0.50)]"
             : "bg-[#25273d] shadow-[0_3.5rem_5rem_-1.5rem_rgba(0,0,0,0.50)]"
