@@ -65,9 +65,13 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
               <div className="flex items-center gap-[1.2rem] items-center">
                 {!todo.completed ? (
                   <div
-                    className="w-[2rem] h-[2rem]
+                    className={`w-[2rem] h-[2rem]
                     xl:w-[2.4rem] xl:h-[2.4rem]
-                    bg-[#fff] border-[0.1rem] border-[#e3e4f1] rounded-[50%] cursor-[pointer]"
+                    border-[0.1rem] rounded-[50%] cursor-[pointer] ${
+                      !isDark
+                        ? "bg-[#fff] border-[#e3e4f1] transition-all duration-300 hover:border-[#c058f3]"
+                        : "bg-[#25273d] border-[#393A4B] transition-all duration-300 hover:border-[#55ddff]"
+                    }`}
                     onClick={() => toggle(todo.id)}
                   ></div>
                 ) : (
@@ -112,10 +116,10 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                   </svg>
                 )}
                 <p
-                  className={`text-[#494c6b] text-[1.2rem] xl:text-[1.8rem] font-normal
+                  className={`text-[1.2rem] xl:text-[1.8rem] font-normal
                     tracking-[-0.167px] xl:tracking-[-0.25px] ${
                       todo.completed ? "line-through" : ""
-                    }`}
+                    } ${!isDark ? "text-[#494c6b]" : "text-[#c8cbe7]"}`}
                 >
                   {todo.text}
                 </p>
@@ -137,7 +141,11 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                 />
               </svg>
             </div>
-            <div className="h-px bg-[#e3e4f1] my-[1.6rem] w-auto"></div>
+            <div
+              className={`h-px my-[1.6rem] w-auto ${
+                !isDark ? "bg-[#e3e4f1]" : "bg-[#393a4b]"
+              }`}
+            ></div>
           </div>
         ))}
         <div
@@ -150,9 +158,10 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             xl:items-center"
           >
             <span
-              className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] transition-all duration-300 hover:text-[#494c6b] ${
-                filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
-              }`}
+              className={`cursor-[pointer] text-[#3a7cfd] text-[1.4rem] font-[700] tracking-[-0.194px] 
+                transition-all duration-300 hover:text-[#494c6b] ${
+                  filtered === "all" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+                }`}
               onClick={() => {
                 setFiltered("all");
                 setTodo(allTodos);
@@ -161,9 +170,10 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
               All
             </span>
             <span
-              className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px] transition-all duration-300 hover:text-[#494c6b] ${
-                filtered === "active" ? "text-[#3a7cfd]" : "text-[#9495a5]"
-              }`}
+              className={`cursor-[pointer]  text-[1.4rem] font-[700] tracking-[-0.194px]
+                 transition-all duration-300 hover:text-[#494c6b] ${
+                   filtered === "active" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+                 }`}
               onClick={() => {
                 setFiltered("active");
                 setTodo(allTodos.filter((item) => !item.completed));
@@ -172,9 +182,10 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
               Active
             </span>
             <span
-              className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] transition-all duration-300 hover:text-[#494c6b] ${
-                filtered === "completed" ? "text-[#3a7cfd]" : "text-[#9495a5]"
-              }`}
+              className={`cursor-[pointer] text-[1.4rem] font-[700] tracking-[-0.194px] 
+                transition-all duration-300 hover:text-[#494c6b] ${
+                  filtered === "completed" ? "text-[#3a7cfd]" : "text-[#9495a5]"
+                }`}
               onClick={() => {
                 setFiltered("completed");
                 setTodo(allTodos.filter((item) => item.completed));
