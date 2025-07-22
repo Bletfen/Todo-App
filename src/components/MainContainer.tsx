@@ -77,7 +77,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
         {todos.map((todo, index) => (
           <div
             key={todo.id}
-            className="transition-all duration-300"
+            className="transition-all duration-300 cursor-[grab]"
             draggable={true}
             onDragStart={() => setDraggedIndex(index)}
             onDragOver={(e) => e.preventDefault()}
