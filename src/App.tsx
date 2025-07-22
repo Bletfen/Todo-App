@@ -17,7 +17,7 @@ function App() {
     >
       <Header isDark={isDark} setIsDark={setIsDark} />
       <MainContainer isDark={isDark} />
-      <Footer />
+      <Footer isDark={isDark} />
     </div>
   );
 }
