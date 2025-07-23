@@ -150,7 +150,13 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="cursor-[pointer]"
                 onClick={() =>
-                  handleDelete(todo.id, setTodo, setAllTodos, todos, filtered)
+                  handleDelete(
+                    todo.id,
+                    setTodo,
+                    setAllTodos,
+                    allTodos,
+                    filtered
+                  )
                 }
               >
                 <path
