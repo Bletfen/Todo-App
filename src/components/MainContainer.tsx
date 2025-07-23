@@ -13,7 +13,12 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
     (item) => item.completed === false
   ).length;
 
-  function handleDrop(dropIndex: number) {
+  function handleDrop(
+    dropIndex: number,
+    setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
+    setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
+    setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>
+  ) {
     if (draggedIndex === null || draggedIndex === dropIndex) return;
     const newTodos = [...todos];
     const draggedItems = newTodos[draggedIndex];
