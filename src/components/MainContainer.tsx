@@ -42,7 +42,16 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             draggable={true}
             onDragStart={() => setDraggedIndex(index)}
             onDragOver={(e) => e.preventDefault()}
-            onDrop={() => handleDrop(index)}
+            onDrop={() =>
+              handleDrop(
+                index,
+                setTodo,
+                setAllTodos,
+                setDraggedIndex,
+                draggedIndex,
+                todos
+              )
+            }
           >
             <div className="flex items-center justify-between px-[2rem] cursor-[grab]">
               <div className="flex items-center gap-[1.2rem] items-center">

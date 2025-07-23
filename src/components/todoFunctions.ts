@@ -69,7 +69,9 @@ export function handleDrop(
   dropIndex: number,
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-  setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>
+  setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>,
+  draggedIndex: number | null,
+  todos: TTodo
 ) {
   if (draggedIndex === null || draggedIndex === dropIndex) return;
   const newTodos = [...todos];
