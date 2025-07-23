@@ -12,11 +12,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
-  // function handleDelete(id: number) {
-  //   const filteredTodos = todos.filter((item) => item.id !== id);
-  //   setTodo(filteredTodos);
-  //   setAllTodos(filteredTodos);
-  // }
+
   function clearHandler() {
     const updateAll = allTodos.filter((item) => !item.completed);
     setAllTodos(updateAll);
