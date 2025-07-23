@@ -64,3 +64,21 @@ export function clearHandler(
       break;
   }
 }
+
+export function handleDrop(
+  dropIndex: number,
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
+  setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>
+) {
+  if (draggedIndex === null || draggedIndex === dropIndex) return;
+  const newTodos = [...todos];
+  const draggedItems = newTodos[draggedIndex];
+
+  newTodos.splice(draggedIndex, 1);
+  newTodos.splice(dropIndex, 0, draggedItems);
+
+  setTodo(newTodos);
+  setAllTodos(newTodos);
+  setDraggedIndex(null);
+}

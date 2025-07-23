@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Todos from "../todos.json";
 import Input from "./Input";
-import { toggle, handleDelete, clearHandler } from "./todoFunctions";
+import {
+  toggle,
+  handleDelete,
+  clearHandler,
+  handleDrop,
+} from "./todoFunctions";
 export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [todos, setTodo] = useState<TTodo>(Todos);
   const [allTodos, setAllTodos] = useState<TTodo>(Todos);
@@ -12,24 +17,6 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
-
-  function handleDrop(
-    dropIndex: number,
-    setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
-    setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-    setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>
-  ) {
-    if (draggedIndex === null || draggedIndex === dropIndex) return;
-    const newTodos = [...todos];
-    const draggedItems = newTodos[draggedIndex];
-
-    newTodos.splice(draggedIndex, 1);
-    newTodos.splice(dropIndex, 0, draggedItems);
-
-    setTodo(newTodos);
-    setAllTodos(newTodos);
-    setDraggedIndex(null);
-  }
 
   return (
     <>
