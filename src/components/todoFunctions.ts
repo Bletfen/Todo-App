@@ -44,3 +44,18 @@ export function handleDelete(
       break;
   }
 }
+
+export function clearHandler(
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
+  allTodos: TTodo,
+  todos: TTodo
+) {
+  const updateAll = allTodos.filter((item) => !item.completed);
+  setAllTodos(updateAll);
+  if (todos.every((item) => item.completed)) {
+    setTodo([]);
+  } else {
+    setTodo(updateAll.filter((item) => !item.completed));
+  }
+}

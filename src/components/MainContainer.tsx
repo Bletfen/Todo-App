@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Todos from "../todos.json";
 import Input from "./Input";
-import { toggle, handleDelete } from "./todoFunctions";
+import { toggle, handleDelete, clearHandler } from "./todoFunctions";
 export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [todos, setTodo] = useState<TTodo>(Todos);
   const [allTodos, setAllTodos] = useState<TTodo>(Todos);
@@ -12,16 +12,6 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
-
-  function clearHandler() {
-    const updateAll = allTodos.filter((item) => !item.completed);
-    setAllTodos(updateAll);
-    if (todos.every((item) => item.completed)) {
-      setTodo([]);
-    } else {
-      setTodo(updateAll.filter((item) => !item.completed));
-    }
-  }
 
   function handleDrop(dropIndex: number) {
     if (draggedIndex === null || draggedIndex === dropIndex) return;
@@ -221,7 +211,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
           <span
             className={`cursor-[pointer] transition-all duration-300 hover:text-[#494c6b]
                ${!isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"}`}
-            onClick={() => clearHandler()}
+            onClick={() => clearHandler(setAllTodos, setTodo, allTodos, todos)}
           >
             Clear Completed
           </span>
