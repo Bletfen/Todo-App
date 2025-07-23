@@ -211,7 +211,9 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
           <span
             className={`cursor-[pointer] transition-all duration-300 hover:text-[#494c6b]
                ${!isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"}`}
-            onClick={() => clearHandler(setAllTodos, setTodo, allTodos, todos)}
+            onClick={() =>
+              clearHandler(setAllTodos, setTodo, allTodos, filtered)
+            }
           >
             Clear Completed
           </span>
