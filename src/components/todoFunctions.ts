@@ -71,11 +71,11 @@ export function handleDrop(
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
   setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>,
   draggedIndex: number | null,
-  todos: TTodo,
+  allTodos: TTodo,
   filtered: "all" | "active" | "completed"
 ) {
   if (draggedIndex === null || draggedIndex === dropIndex) return;
-  const newTodos = [...todos];
+  const newTodos = [...allTodos];
   const draggedItem = newTodos[draggedIndex];
 
   newTodos.splice(draggedIndex, 1);
