@@ -26,9 +26,20 @@ export function handleDelete(
   id: number,
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-  todos: TTodo
+  todos: TTodo,
+  filtered: "all" | "active" | "completed"
 ) {
   const filteredTodos = todos.filter((item) => item.id !== id);
-  setTodo(filteredTodos);
   setAllTodos(filteredTodos);
+
+  switch (filtered) {
+    case "all":
+      setTodo(filteredTodos);
+      break;
+    case "active":
+      setTodo(filteredTodo);
+      break;
+    case "completed":
+      setTodo(filteredTodos.filter((item) => item.complted));
+  }
 }
