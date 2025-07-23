@@ -66,15 +66,20 @@ export function clearHandler(
 }
 
 export function handleDrop(
-  dropIndex: number,
+  draggedId: number,
+  droppedId: number,
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-  setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>,
-  draggedIndex: number | null,
+  setDraggedId: React.Dispatch<React.SetStateAction<number | null>>,
   allTodos: TTodo,
   filtered: "all" | "active" | "completed"
 ) {
-  if (draggedIndex === null || draggedIndex === dropIndex) return;
+  const draggedIndex = allTodos.findIndex((item) => item.id === draggedId);
+  const dropIndex = allTodos.findIndex((item) => item.id === droppedId);
+
+  if (draggedIndex === -1 || dropIndex === -1 || draggedIndex === dropIndex)
+    return;
+
   const newTodos = [...allTodos];
   const draggedItem = newTodos[draggedIndex];
 
@@ -94,5 +99,5 @@ export function handleDrop(
       setTodo(newTodos.filter((item) => item.completed));
       break;
   }
-  setDraggedIndex(null);
+  setDraggedId(null);
 }

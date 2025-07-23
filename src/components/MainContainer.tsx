@@ -13,7 +13,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
   const [filtered, setFiltered] = useState<"all" | "active" | "completed">(
     "all"
   );
-  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [draggedId, setDraggedId] = useState<number | null>(null);
   const completedTodos = todos.filter(
     (item) => item.completed === false
   ).length;
@@ -35,20 +35,20 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
           : "bg-[#25273d] shadow-[0_3.5rem_5rem_-1.5rem_rgba(0,0,0,0.50)]"
       }`}
       >
-        {todos.map((todo, index) => (
+        {todos.map((todo) => (
           <div
             key={todo.id}
             className="transition-all duration-300 cursor-[grab]"
             draggable={true}
-            onDragStart={() => setDraggedIndex(index)}
+            onDragStart={() => setDraggedId(todo.id)}
             onDragOver={(e) => e.preventDefault()}
             onDrop={() =>
               handleDrop(
-                index,
+                draggedId!,
+                todo.id,
                 setTodo,
                 setAllTodos,
-                setDraggedIndex,
-                draggedIndex,
+                setDraggedId,
                 allTodos,
                 filtered
               )
