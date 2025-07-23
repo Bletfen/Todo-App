@@ -71,16 +71,28 @@ export function handleDrop(
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
   setDraggedIndex: React.Dispatch<React.SetStateAction<number | null>>,
   draggedIndex: number | null,
-  todos: TTodo
+  todos: TTodo,
+  filtered: "all" | "active" | "completed"
 ) {
   if (draggedIndex === null || draggedIndex === dropIndex) return;
   const newTodos = [...todos];
-  const draggedItems = newTodos[draggedIndex];
+  const draggedItem = newTodos[draggedIndex];
 
   newTodos.splice(draggedIndex, 1);
-  newTodos.splice(dropIndex, 0, draggedItems);
+  newTodos.splice(dropIndex, 0, draggedItem);
 
-  setTodo(newTodos);
   setAllTodos(newTodos);
+
+  switch (filtered) {
+    case "all":
+      setTodo(newTodos);
+      break;
+    case "active":
+      setTodo(newTodos.filter((item) => !item.completed));
+      break;
+    case "completed":
+      setTodo(newTodos.filter((item) => item.completed));
+      break;
+  }
   setDraggedIndex(null);
 }

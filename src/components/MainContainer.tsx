@@ -49,7 +49,8 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                 setAllTodos,
                 setDraggedIndex,
                 draggedIndex,
-                todos
+                todos,
+                filtered
               )
             }
           >
