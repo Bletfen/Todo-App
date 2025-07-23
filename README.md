@@ -51,6 +51,7 @@ npm install
 npm run dev
 
 Visit http://localhost:5173 in your browser.
+
 📄 License
 
 This project is open source and available under the MIT License.
