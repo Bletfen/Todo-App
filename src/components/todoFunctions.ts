@@ -37,9 +37,10 @@ export function handleDelete(
       setTodo(filteredTodos);
       break;
     case "active":
-      setTodo(filteredTodo);
+      setTodo(filteredTodos.filter((item) => !item.completed));
       break;
     case "completed":
-      setTodo(filteredTodos.filter((item) => item.complted));
+      setTodo(filteredTodos.filter((item) => item.completed));
+      break;
   }
 }
