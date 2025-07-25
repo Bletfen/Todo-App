@@ -1,7 +1,25 @@
-type functionTypes = {
+export type filtered = "all" | "active" | "completed";
+
+type multipleFuncTypes = {
   id: number;
   allTodos: TTodo;
-  filtered: "all" | "active" | "completed";
+  filtered: filtered;
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
+};
+
+type handleDeleteTypes = {
+  id: number;
+  todos: TTodo;
+  filtered: filtered;
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
+};
+
+type handleDropTypes = {
+  id: number;
+  allTodos: TTodo;
+  filtered: filtered;
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
   todos: TTodo;
@@ -16,7 +34,7 @@ export function toggle({
   filtered,
   setTodo,
   setAllTodos,
-}: functionTypes) {
+}: multipleFuncTypes) {
   const updateAll = allTodos.map((item) =>
     item.id === id ? { ...item, completed: !item.completed } : item
   );
@@ -40,7 +58,7 @@ export function handleDelete({
   setAllTodos,
   todos,
   filtered,
-}: functionTypes) {
+}: handleDeleteTypes) {
   const filteredTodos = todos.filter((item) => item.id !== id);
   setAllTodos(filteredTodos);
 
@@ -62,7 +80,7 @@ export function clearHandler({
   setAllTodos,
   allTodos,
   filtered,
-}: functionTypes) {
+}: multipleFuncTypes) {
   const updateAll = allTodos.filter((item) => !item.completed);
   setAllTodos(updateAll);
 
@@ -85,7 +103,7 @@ export function handleDrop({
   setDraggedId,
   allTodos,
   filtered,
-}: functionTypes) {
+}: handleDropTypes) {
   const draggedIndex = allTodos.findIndex((item) => item.id === draggedId);
   const dropIndex = allTodos.findIndex((item) => item.id === droppedId);
 
