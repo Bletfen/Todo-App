@@ -148,7 +148,7 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                     id: todo.id,
                     setTodo,
                     setAllTodos,
-                    todos,
+                    allTodos,
                     filtered,
                   })
                 }

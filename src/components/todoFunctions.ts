@@ -10,7 +10,7 @@ type toggleAndClearTypes = {
 
 type handleDeleteTypes = {
   id: number;
-  todos: TTodo;
+  allTodos: TTodo;
   filtered: filtered;
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
@@ -54,10 +54,10 @@ export function handleDelete({
   id,
   setTodo,
   setAllTodos,
-  todos,
+  allTodos,
   filtered,
 }: handleDeleteTypes) {
-  const filteredTodos = todos.filter((item) => item.id !== id);
+  const filteredTodos = allTodos.filter((item) => item.id !== id);
   setAllTodos(filteredTodos);
 
   switch (filtered) {
@@ -85,7 +85,7 @@ export function clearHandler({
   switch (filtered) {
     case "all":
     case "active":
-      setTodo(updateAll);
+      setTodo(updateAll.filter((item) => !item.completed));
       break;
     case "completed":
       setTodo([]);
