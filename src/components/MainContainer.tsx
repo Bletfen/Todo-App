@@ -38,8 +38,8 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             onDragOver={(e) => e.preventDefault()}
             onDrop={() =>
               handleDrop({
-                draggedId,
-                id: todo.id,
+                draggedId: draggedId!,
+                droppedId: todo.id,
                 setTodo,
                 setAllTodos,
                 setDraggedId,

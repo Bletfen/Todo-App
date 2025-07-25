@@ -17,12 +17,10 @@ type handleDeleteTypes = {
 };
 
 type handleDropTypes = {
-  id: number;
   allTodos: TTodo;
   filtered: filtered;
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
-  todos: TTodo;
   draggedId: number;
   droppedId: number;
   setDraggedId: React.Dispatch<React.SetStateAction<number | null>>;
