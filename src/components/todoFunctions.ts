@@ -102,6 +102,7 @@ export function handleDrop({
   allTodos,
   filtered,
 }: handleDropTypes) {
+  if (draggedId === null) return;
   const draggedIndex = allTodos.findIndex((item) => item.id === draggedId);
   const dropIndex = allTodos.findIndex((item) => item.id === droppedId);
 
