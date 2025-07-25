@@ -1,10 +1,22 @@
-export function toggle(
-  id: number,
-  allTodos: TTodo,
-  filtered: "all" | "active" | "completed",
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>
-) {
+type functionTypes = {
+  id: number;
+  allTodos: TTodo;
+  filtered: "all" | "active" | "completed";
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
+  todos: TTodo;
+  draggedId: number;
+  droppedId: number;
+  setDraggedId: React.Dispatch<React.SetStateAction<number | null>>;
+};
+
+export function toggle({
+  id,
+  allTodos,
+  filtered,
+  setTodo,
+  setAllTodos,
+}: functionTypes) {
   const updateAll = allTodos.map((item) =>
     item.id === id ? { ...item, completed: !item.completed } : item
   );
@@ -22,13 +34,13 @@ export function toggle(
   }
 }
 
-export function handleDelete(
-  id: number,
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-  todos: TTodo,
-  filtered: "all" | "active" | "completed"
-) {
+export function handleDelete({
+  id,
+  setTodo,
+  setAllTodos,
+  todos,
+  filtered,
+}: functionTypes) {
   const filteredTodos = todos.filter((item) => item.id !== id);
   setAllTodos(filteredTodos);
 
@@ -45,12 +57,12 @@ export function handleDelete(
   }
 }
 
-export function clearHandler(
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-  allTodos: TTodo,
-  filtered: "all" | "active" | "completed"
-) {
+export function clearHandler({
+  setTodo,
+  setAllTodos,
+  allTodos,
+  filtered,
+}: functionTypes) {
   const updateAll = allTodos.filter((item) => !item.completed);
   setAllTodos(updateAll);
 
@@ -65,15 +77,15 @@ export function clearHandler(
   }
 }
 
-export function handleDrop(
-  draggedId: number,
-  droppedId: number,
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>,
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>,
-  setDraggedId: React.Dispatch<React.SetStateAction<number | null>>,
-  allTodos: TTodo,
-  filtered: "all" | "active" | "completed"
-) {
+export function handleDrop({
+  draggedId,
+  droppedId,
+  setTodo,
+  setAllTodos,
+  setDraggedId,
+  allTodos,
+  filtered,
+}: functionTypes) {
   const draggedIndex = allTodos.findIndex((item) => item.id === draggedId);
   const dropIndex = allTodos.findIndex((item) => item.id === droppedId);
 
