@@ -1,6 +1,13 @@
 export type filtered = "all" | "active" | "completed";
 
-type toggleAndClearTypes = {
+type clearTypes = {
+  allTodos: TTodo;
+  filtered: filtered;
+  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
+  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
+};
+
+type toggleTypes = {
   id: number;
   allTodos: TTodo;
   filtered: filtered;
@@ -32,7 +39,7 @@ export function toggle({
   filtered,
   setTodo,
   setAllTodos,
-}: toggleAndClearTypes) {
+}: toggleTypes) {
   const updateAll = allTodos.map((item) =>
     item.id === id ? { ...item, completed: !item.completed } : item
   );
@@ -78,7 +85,7 @@ export function clearHandler({
   setAllTodos,
   allTodos,
   filtered,
-}: toggleAndClearTypes) {
+}: clearTypes) {
   const updateAll = allTodos.filter((item) => !item.completed);
   setAllTodos(updateAll);
 

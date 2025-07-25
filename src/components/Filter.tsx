@@ -75,7 +75,14 @@ export default function Filter({
         <span
           className={`cursor-[pointer] transition-all duration-300 hover:text-[#494c6b]
                ${!isDark ? "hover:text-[#494c6b]" : "hover:text-[#e3e4f1]"}`}
-          onClick={() => clearHandler(setTodo, setAllTodos, allTodos, filtered)}
+          onClick={() =>
+            clearHandler({
+              setTodo,
+              setAllTodos,
+              allTodos,
+              filtered,
+            })
+          }
         >
           Clear Completed
         </span>
