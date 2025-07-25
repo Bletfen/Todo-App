@@ -21,7 +21,7 @@ type handleDropTypes = {
   filtered: filtered;
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
-  draggedId: number;
+  draggedId: number | null;
   droppedId: number;
   setDraggedId: React.Dispatch<React.SetStateAction<number | null>>;
 };
