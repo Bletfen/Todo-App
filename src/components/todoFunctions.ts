@@ -1,6 +1,6 @@
 export type filtered = "all" | "active" | "completed";
 
-type multipleFuncTypes = {
+type toggleAndClearTypes = {
   id: number;
   allTodos: TTodo;
   filtered: filtered;
@@ -32,7 +32,7 @@ export function toggle({
   filtered,
   setTodo,
   setAllTodos,
-}: multipleFuncTypes) {
+}: toggleAndClearTypes) {
   const updateAll = allTodos.map((item) =>
     item.id === id ? { ...item, completed: !item.completed } : item
   );
@@ -78,7 +78,7 @@ export function clearHandler({
   setAllTodos,
   allTodos,
   filtered,
-}: multipleFuncTypes) {
+}: toggleAndClearTypes) {
   const updateAll = allTodos.filter((item) => !item.completed);
   setAllTodos(updateAll);
 
