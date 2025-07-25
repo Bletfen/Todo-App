@@ -1,33 +1,23 @@
 export type filtered = "all" | "active" | "completed";
 
-type clearTypes = {
+type baseTypes = {
   allTodos: TTodo;
   filtered: filtered;
   setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
   setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
 };
 
-type toggleTypes = {
+type clearTypes = baseTypes;
+
+type toggleTypes = baseTypes & {
   id: number;
-  allTodos: TTodo;
-  filtered: filtered;
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
 };
 
-type handleDeleteTypes = {
+type handleDeleteTypes = baseTypes & {
   id: number;
-  allTodos: TTodo;
-  filtered: filtered;
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
 };
 
-type handleDropTypes = {
-  allTodos: TTodo;
-  filtered: filtered;
-  setTodo: React.Dispatch<React.SetStateAction<TTodo>>;
-  setAllTodos: React.Dispatch<React.SetStateAction<TTodo>>;
+type handleDropTypes = baseTypes & {
   draggedId: number | null;
   droppedId: number;
   setDraggedId: React.Dispatch<React.SetStateAction<number | null>>;
