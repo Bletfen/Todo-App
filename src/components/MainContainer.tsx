@@ -37,15 +37,15 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
             onDragStart={() => setDraggedId(todo.id)}
             onDragOver={(e) => e.preventDefault()}
             onDrop={() =>
-              handleDrop(
-                draggedId!,
-                todo.id,
+              handleDrop({
+                draggedId,
+                id: todo.id,
                 setTodo,
                 setAllTodos,
                 setDraggedId,
                 allTodos,
-                filtered
-              )
+                filtered,
+              })
             }
           >
             <div className="flex items-center justify-between px-[2rem] cursor-[grab]">
@@ -60,7 +60,13 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                         : "bg-[#25273d] border-[#393A4B] hover:border-[#55ddff]"
                     }`}
                     onClick={() =>
-                      toggle(todo.id, allTodos, filtered, setTodo, setAllTodos)
+                      toggle({
+                        id: todo.id,
+                        allTodos,
+                        filtered,
+                        setTodo,
+                        setAllTodos,
+                      })
                     }
                   ></div>
                 ) : (
@@ -70,7 +76,13 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     onClick={() =>
-                      toggle(todo.id, allTodos, filtered, setTodo, setAllTodos)
+                      toggle({
+                        id: todo.id,
+                        allTodos,
+                        filtered,
+                        setTodo,
+                        setAllTodos,
+                      })
                     }
                   >
                     <circle
@@ -132,13 +144,13 @@ export default function MainContainer({ isDark }: { isDark: boolean }) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="cursor-[pointer]"
                 onClick={() =>
-                  handleDelete(
-                    todo.id,
+                  handleDelete({
+                    id: todo.id,
                     setTodo,
                     setAllTodos,
-                    allTodos,
-                    filtered
-                  )
+                    todos,
+                    filtered,
+                  })
                 }
               >
                 <path
